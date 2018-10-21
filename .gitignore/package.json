@@ -1,0 +1,36 @@
+{
+  "name": "bot1122334455",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kordik",
+  "license": "MIT",
+  "dependencies": {
+    "anti-spam": "^0.2.7",
+    "array-sort": "^1.0.0",
+    "ascii-art": "^1.4.4",
+    "chalk": "^2.4.1",
+    "discord-anti-spam": "^1.1.2",
+    "discord.js": "^11.4.2",
+    "ffmpeg-binaries": "^4.0.0",
+    "fs": "0.0.1-security",
+    "inquirer": "^6.2.0",
+    "is-letter": "^1.1.1",
+    "jimp": "^0.5.4",
+    "mathjs": "^5.1.2",
+    "moment": "^2.22.2",
+    "ms": "^2.1.1",
+    "relevant-urban": "^2.0.0",
+    "return-deep-diff": "^0.3.0",
+    "snekfetch": "^4.0.4",
+    "sqlite": "^3.0.0",
+    "string-similarity": "^1.2.2",
+    "table": "^5.0.2",
+    "weather-js": "^2.0.0",
+    "weather.js": "^0.1.0",
+    "ytdl-core": "^0.25.2"
+  }
+}
