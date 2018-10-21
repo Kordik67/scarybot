@@ -1,0 +1,35 @@
+//caseNumber (caseNumber.js file)
+async function caseNumber(client, modlog) {
+  const messages = await modlog.fetchMessages({limit:5});
+  const log = messages.filter(m => m.author.id === client.user.id &&
+    m.embeds[0] &&
+    m.embeds[0].type === 'rich' &&
+    m.embeds[0].footer &&
+    m.embeds[0].footer.text.startsWith('Case')
+  ).first();
+  if (!log) return 1;
+  const thisCase = /Case\s(\d+)/.exec(log.embeds[0].footer.text);
+  return thisCase ? parseInt(thisCase[1]) + 1 : 1;
+}
+
+module.exports = {caseNumber};
+
+//eventLoader (eventLoader.js file)
+const reqEvent = (event) => require (`../events/${event}`)
+module.exports = client => {
+	client.on('ready', () => reqEvent('ready')(client));
+	client.on('reconnecting', () => reqEvent('reconnecting')(client));
+	client.on('disconnect', () => reqEvent('disconnect')(client));
+	client.on('message', reqEvent('message'));
+};
+
+//parseUser (parseUser.js file)
+exports.parseUser = (message, user) => {
+  const member = message.guild.member(user) || null;
+  if (user.id === message.author.id) {
+    return message.channel.send('You cannot do that to yourself, why did you try?');
+  } else if (member) {
+    if (member.highestRole.position >= message.member.highestRole.position) return message.channel.send('The targeted member has a higher or equal role position than you.');
+  }
+  return user;
+};
